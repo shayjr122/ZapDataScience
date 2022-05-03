@@ -26,7 +26,7 @@ class DataProcess:
         self.df['משקל']= pd.to_numeric(self.df['משקל'])
         self.df['התאמה לגיימינג'] = self.df['התאמה לגיימינג'] == 'גיימינג' 
         self.df['מחיר מקסימלי'] = pd.to_numeric(self.df['מחיר מקסימלי'].str.replace(',',''))
-        self.df['מחיר מינימלי'] = pd.to_numeric(self.df['מחיר מינימלי'].str.replace(',',''))
+        self.df['מחיר מינימלי'] = pd.to_numeric(self.df['מחיר מינימלי'].str.replace(',','' ))
 
         
 
