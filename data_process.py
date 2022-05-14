@@ -3,6 +3,7 @@ import pandas as pd
 import numpy as np
 import seaborn as sns
 import matplotlib.pyplot as plt
+
 from sklearn.preprocessing import LabelEncoder
 
 class DataProcess:
@@ -41,8 +42,7 @@ class DataProcess:
             else:
                 self.df.loc[i, 'כונן קשיח'] = int(arr[0])
 
-        print(self.df['כונן קשיח'])
-
+       
         self.df['רזולוציית מסך'] = self.df['רזולוציית מסך'].str.replace('X','x')
         self.df['משקל'] = self.df['משקל'].str.replace('ק"ג','').str.strip()
         self.df['משקל']= pd.to_numeric(self.df['משקל'])
@@ -52,7 +52,6 @@ class DataProcess:
         self.df['מחיר מינימלי'] = pd.to_numeric(self.df['מחיר מינימלי'].str.replace(',','' ))
 
         
-        print(self.df.head())
 
     def manipulate(self):
         self.df=self.df.dropna()
@@ -80,8 +79,16 @@ class DataProcess:
         
 
     def save(self):
-        self.df.style.background_gradient(cmap='Blues')
-        print(self.df.corr(method=histogram_intersection))
+        numeric_df = self.df[["דור מעבד" , "סוג הזכרון","תאריך כניסה לזאפ", "נפח זיכרון RAM","התאמה לגיימינג", "כונן קשיח", "קצב רענון תצוגה","כונן אופטי","מסך מגע","גודל מסך"	, "רזולוציית מסך","מודם סלולארי"]]
+        # "תוספת מחיר" 
+        print(sns.heatmap(numeric_df.corr()))
+
+
+
+	
+
+        # self.df.style.background_gradient(cmap='Blues')
+        # print(self.df.corr(method=histogram_intersection))
         # self.df['יצרן'] = LabelEncoder().fit_transform(self.df['יצרן'])
         # self.df['מערכת הפעלה'] = LabelEncoder().fit_transform(self.df['מערכת הפעלה'])
         # self.df['סדרה'] = LabelEncoder().fit_transform(self.df['סדרה'])
@@ -100,9 +107,9 @@ class DataProcess:
 
 
         # sns.heatmap(self.df, annot=True)
-        self.df.to_csv('data.csv', index=False ,encoding = 'utf-8-sig')
+        # self.df.to_csv('data.csv', index=False ,encoding = 'utf-8-sig')
         
-def histogram_intersection(a, b):
-    v = np.minimum(a, b).sum().round(decimals=1)
-    return v
+# def histogram_intersection(a, b):
+#     v = np.minimum(a, b).sum().round(decimals=1)
+#     return v
         
