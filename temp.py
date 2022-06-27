@@ -14,7 +14,7 @@ def translate_names(df):
    "סוג מעבד":"CPU type",
   "נפח זיכרון RAM":"RAM Capacity",
    "מהירות מעבד":"CPU speed",
-   "דגם מעבד":"CPU modal",
+   "דגם מעבד":"CPU model",
    "דור מעבד":"CPU generation",
    "כונן קשיח":"Hard drive capacity",
    "מהירות כונן קשיח":"Hard drive Type",
